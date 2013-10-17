@@ -1,0 +1,617 @@
+!!! 5
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title Scaling JavaScript Apps
+
+    //- Check out 'src/bower_components/prism/' for available themes
+    link(rel='stylesheet', type='text/css', href='bower_components/normalize-css/normalize.css')
+    link(rel='stylesheet', type='text/css', href='bower_components/prism/prism-tomorrow.css')
+
+    link(rel='stylesheet', type='text/css', href='styles/main.css')
+    link(rel='stylesheet', type='text/css', href='styles/backgrounds.css')
+
+  body
+
+    article.bespoke-parent
+
+      section(data-bespoke-state='coffee-steam')
+        .content
+          .byline
+            .classy Welcome to the talk:
+          h1
+            | Scalable JavaScript
+          .byline
+            .classy with
+          h1
+            strong  Backbone
+            |  and
+            strong  Marionette
+          .byline
+            .classy with me:
+          .me
+          p Kaleb Fulgham
+          p App Lead at PROS
+          .byline
+            a(href='http://kalebdf.com') http://kalebdf.com
+            a(href='https://twitter.com/kalebdf') @kalebdf
+            a(href='http://github.com/kalebdf') git://kalebdf
+
+      section(data-bespoke-state='coffee-stir')
+        .content
+          .byline
+            .classy Confessions
+          h1 I love coffee!
+          .byline
+            .classy Americano, Cold Brew, Cortado, etc.
+
+      section(data-bespoke-state='coffee-stir')
+        .content
+          .byline
+            .classy Confessions
+          h1 I love the JavaScripts;
+          .byline
+            .classy I may love CoffeeScript more
+
+      section(data-bespoke-state='stuff-face')
+        .content
+          .unbrokenline
+          h2 Web applications
+          .byline
+            .classy innevitably grow & become
+          h2
+            em large
+            |  & complex
+          .unbrokenline
+
+      section(data-bespoke-state='cleese')
+        .content
+          .unbrokenline
+          h2 Solid architecture
+          .byline
+            .classy on the
+          h2 backend
+          .byline
+            .classy and the
+          h2 client
+          .byline
+            .classy is
+          h2 essential
+          .unbrokenline
+
+      section(data-bespoke-state='cleese')
+        .content
+          .unbrokenline
+          h2
+            em Large
+            |  apps
+          .byline
+            .classy should be composed of
+          h2
+            small small
+            |  parts
+          .unbrokenline
+
+      section(data-bespoke-state='coffee-espresso')
+        .content
+          .unbrokenline
+          h2 UI Views
+          .byline
+            .classy should be separate from
+          h2 Data & Business Logic
+          .unbrokenline
+
+      section(data-bespoke-state='codescroll')
+        .content
+          h2 jQuery
+          .byline
+            .classy a tool for the masses
+          h2 DOM manipulation
+          .byline
+            .classy and
+          h2 $.ajax
+          .byline
+            .classy and
+          h2 plugins...
+
+      section(data-bespoke-state='soup')
+        .content
+          .unbrokenline
+          h2 Hacking together jQuery
+          .byline
+            .classy will not scale but instead
+          h2 will make code soup
+          .byline
+            .classy with state stored everywhere
+
+      section(data-bespoke-state='soup')
+        .content
+          .unbrokenline
+          h2 Soup != App
+          .byline
+            .classy so
+          h2 Let's focus...
+          .unbrokenline
+
+      section(data-bespoke-state='money')
+        .content
+          .byline
+            .classy We desire to
+          h2 Solve a Business Problem
+          .unbrokenline
+          h3 Data, Views, Interactions
+          .unbrokenline
+
+      section
+        .content
+          .byline
+            .classy I present to you the
+          h2(style='background-color:#EEE;padding: 15px 5px 0px 5px;')
+            img(src='images/backbone.png',width='600')
+          .byline
+            .classy library
+
+      section(data-bespoke-state='george-popcorn')
+        .content
+          h2
+            strong Backbone.js
+          h3 MVC, MVP, MV* ...
+          ol
+            li
+              em MODELS
+              |  with key-value binding
+            li
+              em COLLECTIONS
+              |  to enumerate
+            li
+              em VIEWS
+              |  with declarative event handling
+            li
+              em ROUTERS
+              |  provide browser history support
+            li
+              em EVENTS
+              |  galore!
+
+      section(data-bespoke-state='george-popcorn')
+        .content
+          .byline
+            .classy Backbone.js (6.3kb) is a
+          h2 MV* library <br/> not a framework
+          .byline
+            .classy It has easy-to-read
+          h2 annotated source code
+
+      section(data-bespoke-state='george-popcorn')
+        .content
+          .byline
+            .classy It is a simple
+          h2 app backbone
+          .byline
+            .classy providing minimal & sane
+          h2 abstractions & building blocks
+
+      section(data-bespoke-state='george-popcorn')
+        .content
+          .byline
+            .classy Use as much or as little for
+          h2 Embedded widgets
+          .byline
+            .classy all the way up to
+          h2 Massive composite apps
+          .unbrokenline
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          .byline
+            .classy Any Object can have
+          h2 Backbone.Events
+          .byline
+            .classy simply extend & trigger
+          code.language-javascript
+            pre.
+              var object = {};
+
+              _.extend(object, Backbone.Events);
+
+              object.on("alert", function(msg) {
+                alert("Triggered " + msg);
+              });
+
+              object.trigger("alert", "an event!");
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          .byline
+            .classy Create a convenient
+          h2 Event dispatcher
+          .byline
+            .classy to coordinate events in the app
+          code.language-javascript
+            pre.
+              var window.App = {};
+
+              // ... amazing app code ...
+
+              App.dispatcher = _.clone(Backbone.Events);
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h2 Venue JSON
+          code.language-javascript
+            pre.
+              {
+                "id": "508b5225e4b0c9eb71763651",
+                "name": "Southside Espresso",
+                "twitter": "@SouthsideHOU",
+                "categories": [
+                  {
+                    "id": "4bf58dd8d48988d1e0931735",
+                    "name": "Coffee Shop",
+                    "icon": "http://t.co/coffeeshop_bg_32.png"
+                  }
+                ],
+                "location": {
+                  "address": "904-C Westheimer Rd.",
+                  "postalCode": "77006",
+                  "city": "Houston"
+                }
+              }
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h2 Backbone.Models
+          code.language-javascript
+            pre.
+              var Venue = Backbone.Model.extend({
+                urlRoot: '/venues'
+              });
+
+              var venue = new Venue({
+                name: "Southside Espresso",
+                twitter: "@SouthsideHOU"
+              });
+
+              venue.get('name');
+              // Southside Espresso
+
+              venue.set('open', false);
+              venue.hasChanged(); // true
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h2 Models + Events
+          code.language-javascript
+            pre.
+              /* Listen to any change */
+              venue.on('change', function(){
+                console.log('Changed something');
+              });
+              venue.set('name', 'The South Side');
+              // Changed something
+
+
+              // Listen to `open` changes
+              venue.on('change:open', function(){
+                console.log('Notify Kaleb');
+              });
+              venue.set('open', true);
+              // Notify Kaleb
+              // Changed something
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          .byline
+            .classy Models can be organized into
+          h2 Collections
+          .byline
+            .classy for convenient access, ordering, and server syncing
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h2 Server Syncing
+          .byline
+            .classy with Models & Collections
+          code.language-javascript
+            pre.
+              var Venue = Backbone.Model.extend({
+                urlRoot: '/venues'
+              });
+
+              var venue = new Venue({ id : 123 });
+              venue.fetch(); // $.ajax `GET /venues/123`
+
+              venue.set('open', true);
+              venue.save(); // $.ajax `PUT /venues/123`
+
+      section(data-bespoke-state='whoa-dude')
+        .content
+          .byline
+            .classy Underscore.js library's functions are
+          h2 helpful utilities
+          .byline
+            .classy automatically mixed-into Models & Collections
+          .row(style='margin-left: 100px;')
+            code.language-javascript
+              pre.
+                _.each();
+                _.filter();
+                _.indexBy();
+                _.last();
+                ...
+            code.language-javascript
+              pre.
+                _.map();
+                _.pluck();
+                _.reduce();
+                _.where();
+                ...
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          .byline
+            .classy More convention than code in a
+          h2 Backbone.View
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          .byline
+            .classy Organize into
+          h2 Logical views
+          .byline
+            .classy that are
+          h2 Backed by Models
+          .byline
+            .classy each of which can
+          h2 Update independently
+          .byline
+            .classy without unneccesary redraw
+
+      section(data-bespoke-state='bill-coffee')
+        .content
+          byline
+            .classy Let's dive into the
+          h2 Example Foursquare App
+
+      section(data-bespoke-state='george-yes')
+        .content
+          .byline
+            .classy Is Backbone lacking X or Y feature?
+          h2 Check the <br> vibrant community!
+          .byline
+            .classy of plugin & extension authors
+
+      section(data-bespoke-state='finger-wag')
+        .content
+          .byline
+            .classy What about all of that
+          h2 Backbone.View boilerplate?
+          .byline
+            .classy Can anything be done? Any extensions?
+
+      section
+        .content
+          .byline
+            .classy I present to you the
+          h2(style='background-color:#EEE;padding: 5px 0px 0px 5px;')
+            img(src='images/marionette.png',height='300',alt='marionette.js')
+          .byline
+            .classy library
+
+      section(data-bespoke-state='applause')
+        .content
+          h2 Marionette.js
+          ol
+            li Reduction of <em>View Boilerplates</em>
+            li Memory management (cleaning up zombie views)
+            li Promotes modular, event-driven architecture
+            li Sensible defaults
+            li Use only what you need!
+
+      section(data-bespoke-state='bill-coffee')
+        .content
+          h2 Let's go back to the code
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h3 Before Marionette
+          code.language-javascript
+            pre.
+              var ItemView = Backbone.View.extend({
+                tagName: 'li',
+                template: _.template($('#item-template').html()),
+                initialize: function() {
+                  this.model.on('change',this.render,this);
+                  this.model.on('destroy',this.remove,this);
+                },
+                render: function() {
+                  this.$el.html(this.template(this.model.toJSON()));
+                  return this;
+                }
+              });
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h3 Before Marionette
+          code.language-javascript
+            pre.
+              var ListView = Backbone.View.extend({
+                tagName: 'ui',
+                initialize: function() {
+                  this.collection.on('add',this.addItem,this);
+                  this.collection.on('remove',this.removeItem,this);
+                  this.collection.on('reset',this.render,this);
+                },
+                // addItem: -> Add item to model-to-view map
+                // removeItem: -> # Remove item from above map
+                render: function() {
+                  this.$el.html('')
+                  this.collection.each(function(model){
+                    view = new ItemView({model: model})
+                    this.$el.append(view.render().$el)
+                  });
+                }
+              });
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h2 With Marionette
+          code.language-javascript
+            pre.
+              var MItemView = Marionette.ItemView.extend({
+                tagName: 'li',
+                template: '#item-template'
+              });
+
+              var MListView = Marionette.CollectionView.extend({
+                itemView: MItemView
+              });
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h3 Zombie Views
+          code.language-javascript
+            pre.
+              var MyView = Backbone.View.extend({
+                initialize: function() {
+                  // Bind to change event to call re-render
+                  this.model.on('change', this.render, this);
+                },
+                render: function() {
+                  alert('Rendering the view '+this.cid);
+                }
+              });
+              var venue = new Backbone.Model();
+              var view = new MyView({ model: venue});
+              // Zombie created
+              view = new MyView({ model: venue});
+              // 2 alerts will fire
+              venue.set({ name: 'Southside Espresso' });
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h3 Killing the Zombie Views
+          code.language-javascript
+            pre.
+              var MyView = Backbone.View.extend({
+                initialize: function() {
+                  // Bind to change event to call re-render
+                  this.listenTo(this.model, 'change', this.render);
+                },
+                close: function() { this.stopListening(); },
+                render: function() {
+                  alert('Rendering the view '+this.cid);
+                }
+              });
+              var venue = new Backbone.Model();
+              var view = new MyView({ model: venue});
+              view.close(); // Double-tap. Kill the zombie!
+              view = new MyView({ model: venue });
+              // Only 1 alert will fire
+              venue.set({ name: 'Southside Espresso' });
+
+      section(data-bespoke-state='coffee-pour')
+        .content
+          h3 Keep it clean & simple
+          code.language-javascript
+            pre.
+              var AppLayout = Marionette.Layout.extend({
+                regions: {
+                  menu: "#menu",
+                  main: "#main"
+                }
+              });
+              var layout = new AppLayout();
+              layout.render();
+              layout.main.show(new SummaryView());
+
+              // ... user interactions ...
+
+              layout.main.show(new DetailedView());
+              // SummaryView `close` is called.
+
+      section(data-bespoke-state='its-ok')
+        .content
+          .byline
+            .classy Marionette.js also offers solutions for
+          h2 Composite Event-Driven
+          .byline
+            .classy architecture through
+          h2 Eventing, App, Modules
+
+      section(data-bespoke-state='high-five')
+        .content
+          .byline
+            .classy Build upon the
+          h2 shoulders of giants
+          .byline
+            .classy Many companies use Backbone.js
+          h3 PROS, Disqus, Rdio
+          h3 Trello, USA Today, Walmart
+          h3 Games & Interactive Magazines
+          h3 Construction, Business, & Pricing
+
+      section(data-bespoke-state='high-five')
+        .content
+          .byline
+            .classy Create your app with a
+          h2 Composite & Modular design
+          .byline
+            .classy and at least use
+          h2 Backbone.js with Marionette.js
+
+      section(data-bespoke-state='george-goodjob')
+        .content
+          h2 Stellar Resources
+          ol
+            li
+              a(href='http://addyosmani.github.io/backbone-fundamentals') Backbone Fundamentals Book by Addy Osmani
+            li
+              a(href='https://speakerdeck.com/ammeep/unsuck-your-backbone') Unsuck Your Backbone
+            li
+              a(href='https://speakerdeck.com/backbonerails/little-opinions-big-possibilities-the-tools-and-patterns-for-building-large-scale-backbone-applications') Little Opinions Big Possibilities, Large Backbone Apps
+            li
+              a(href='http://backboneconf.com') BackboneConf 2013 Talks - Keynote & Others
+            li
+              a(href='https://leanpub.com/building-backbone-plugins') Backbone Plugins Book by Derick Bailey
+            li
+              a(href='http://kalebdf.github.io/BackboneInTheWildTalk/') Backbone In The Wild by Kaleb Fulgham
+
+
+      section(data-bespoke-state='coffee-stir')
+        .content
+          .unbrokenline
+          h1
+            strong Thank You!
+          .unbrokenline
+
+      section(data-bespoke-state='coffee-stir')
+        .content
+          h2
+            strong QUESTIONS?
+          .unbrokenline
+          h3
+            | We @ PROS are hiring
+            strong  UI Engineers
+            | !
+          .byline
+            .classy Contact me:
+          h4
+            | Kaleb Fulgham <br>
+            | kfulgham@pros.com
+          .byline
+            .classy or on Twitter
+          .me
+          h4
+            a(href='https://twitter.com/kalebdf') @kalebdf
+
+    script(src='bower_components/bespoke.js/dist/bespoke.min.js')
+    script(src='bower_components/bespoke-scale/dist/bespoke-scale.min.js')
+    script(src='bower_components/bespoke-hash/dist/bespoke-hash.min.js')
+    script(src='bower_components/bespoke-state/dist/bespoke-state.min.js')
+    script(src='bower_components/prism/prism.js')
+    script(src='scripts/jquery.js')
+    script(src='scripts/underscore.js')
+    script(src='scripts/backbone.js')
+    script(src='scripts/main.js')

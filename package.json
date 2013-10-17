@@ -1,0 +1,24 @@
+{
+  "name": "scaling-javascript-apps-bespoke",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-contrib-clean": "0.4.x",
+    "grunt-contrib-copy": "0.4.x",
+    "grunt-contrib-watch": "0.5.x",
+    "grunt-contrib-coffee": "0.7.x",
+    "grunt-contrib-jade": "0.5.x",
+    "grunt-contrib-stylus": "0.5.x",
+    "grunt-contrib-stylus": "0.5.x",
+    "grunt-contrib-less": "0.7.x",
+    "grunt-contrib-connect": "0.3.x",
+    "grunt-open": "0.2.x",
+    "grunt-concurrent": "0.3.x",
+    "grunt-gh-pages": "0.6.x",
+    "connect-livereload": "0.2.x"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}

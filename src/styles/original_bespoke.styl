@@ -1,0 +1,151 @@
+@import 'nib' // CSS3 extensions for Stylus: http://visionmedia.github.io/nib/
+
+// variables!
+
+slide_width = 840px
+slide_height = 480px
+// slide_background = #eaeaea
+slide_background = #ececea
+
+slide_transition_length = .6s
+slide_transition_easing = ease
+slide_transition_rotate_y = 90deg
+// Safari bugs out on 3d transform-origins, so we have to fake it
+slide_transition_nudge_x = -100px
+
+bullet_transition_length = .3s
+bullet_transition_easing = ease
+bullet_transition_translate_x = 16px
+
+// base
+
+*
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+@media print
+  *
+    -webkit-print-color-adjust: exact
+
+@page
+  size: landscape
+  margin: 0
+
+// bespoke.js layout styles
+
+body
+  background: #111
+  font-family: source-sans-pro, sans-serif
+  font-weight: 400
+  color: #fff
+  overflow: hidden
+
+.bespoke-slide
+  z-index: 2
+  -webkit-box-align: center
+  -moz-box-align: center
+  -ms-box-align: center
+  box-align: center
+  -webkit-box-pack: center
+  -moz-box-pack: center
+  -ms-box-pack: center
+  box-pack: center
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+
+.bespoke-inactive
+  // display was commented out
+  display: none
+  opacity: 0
+  pointer-events: none
+  @media print
+    opacity 1
+
+
+
+.bespoke-active
+  display: -webkit-box
+  display: -moz-box
+  display: -ms-box
+  display: box
+  opacity: 1
+  .content > *
+    opacity: 1
+
+    for num in (1..5)
+      &:nth-child({num})
+        transition: opacity 0.5s linear 0.3s * (num - 1)
+
+
+// bespoke-bullet styles
+
+.bespoke-bullet
+  transition: all bullet_transition_length bullet_transition_easing
+
+.bespoke-bullet-inactive
+  opacity: 0
+  li&
+    transform: translateX(bullet_transition_translate_x)
+  @media print
+    opacity: 1
+
+.bespoke-bullet-active
+  opacity: 1
+
+// bespoke-state styles
+
+.emphatic,
+.emphatic .bespoke-slide
+  background: slide_background
+
+// prism styles
+
+code
+  display: block // fixes flexbox rendering issues in Safari
+  padding: 10px !important
+
+// content styles
+
+body
+  font-family: helvetica, arial, sans-serif
+  font-size: 18px
+  color: #404040
+
+h1
+  font-size: 72px
+  line-height: 82px
+  letter-spacing: -2px
+  margin-bottom: 16px
+
+h2
+  font-size: 42px
+  letter-spacing: -1px
+  margin-bottom: 8px
+
+h3
+  font-size: 24px
+  font-weight: normal
+  margin-bottom: 24px
+  color: #606060
+
+hr
+  visibility: hidden
+  height: 20px
+
+ul
+  list-style: none
+
+li
+  margin-bottom: 12px
+
+p
+  margin: 0 100px 12px
+  line-height: 22px
+
+a
+  color: #0093CC
+  text-decoration: none

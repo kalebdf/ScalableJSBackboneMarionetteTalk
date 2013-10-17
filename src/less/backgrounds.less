@@ -1,0 +1,151 @@
+@brightnessRatio: 0.6;
+@brightnessFactor: 1.0;
+
+.transform(@transforms) {
+  -webkit-transform: @transforms;
+  -moz-transform: @transforms;
+  -ms-transform: @transforms;
+  -o-transform: @transforms;
+  transform: @transforms;
+}
+
+.filter(@filters) {
+  -webkit-filter: @filters;
+  -moz-filter: @filters;
+  filter: @filters;
+}
+
+article {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &::before, &::after {
+    display: block;
+    position: absolute;
+    display: block;
+    position: absolute;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    content: '';
+    .filter(grayscale(0.3) brightness(0.3 * @brightnessFactor));
+  }
+
+  &::before {
+    z-index: 1;
+    width: 20%;
+    height: 20%;
+    top: 50%;
+    left: 50%;
+    margin-top: -5%;
+    margin-left: -10%;
+    .transform(scale(5.5));
+  }
+
+  &::after {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  // use ::before for gifs (small size, scaled up)
+  &.its-ok::before {
+    .transform(scale(6.5));
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/seinfeld33.gif');
+  }
+
+  &.high-five::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/colberthighfive.gif');
+  }
+
+  &.bill-coffee::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/bill-murray-drinks-coffee.gif');
+  }
+
+  &.soup::before {
+    .filter(blur(.2px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/soup.jpg');
+  }
+
+  &.cleese::before {
+    .filter(blur(.3px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/cleese.gif');
+  }
+
+  &.codescroll::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/code.gif');
+  }
+
+  &.stuff-face::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/bill_murray_gif_9_stuffface.gif');
+  }
+
+  &.money::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/money.gif');
+  }
+
+  &.coffee-espresso::before {
+    .filter(blur(.2px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/espresso.gif');
+  }
+
+  &.coffee-stir::before {
+    .filter(blur(.2px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/coffeestir.gif');
+  }
+
+  &.applause::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/applause.gif');
+  }
+
+  &.finger-wag::before {
+    .filter(blur(.2px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/seinfeld-gifs-finger-wag.gif');
+  }
+
+  // use ::before for gifs (small size, scaled up)
+  &.coffee-steam::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/coffee.gif');
+  }
+
+  // use ::before for gifs (small size, scaled up)
+  &.coffee-pour::before {
+    .filter(blur(1px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/coffee-pour.gif');
+  }
+
+  &.george-goodjob::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/george_goodjob.gif');
+  }
+
+  &.george-yes::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/george_yes.gif');
+  }
+
+  &.george-popcorn::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/george_popcorn.gif');
+  }
+
+  &.whoa-dude::before {
+    .filter(blur(.5px) grayscale(0.3) brightness(@brightnessRatio * @brightnessFactor));
+    background-image: url('../images/whoa.gif');
+  }
+
+}
+
