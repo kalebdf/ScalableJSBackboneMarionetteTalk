@@ -1,6 +1,6 @@
 # Scalable JavaScript with Backbone and Marionette
 
-Originally presented by [Kaleb Fulgham][pf] in a talk on September 28, 2013 at [Houston Tech Fest 2013][htf].
+Originally presented by me, [Kaleb Fulgham][pf], in a talk on September 28, 2013 at [Houston Tech Fest 2013][htf].
 
 ## Stellar Resources
 
@@ -13,7 +13,9 @@ Originally presented by [Kaleb Fulgham][pf] in a talk on September 28, 2013 at [
 
 ## Presentation
 
-> A [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation, built with [generator-bespoke](https://github.com/markdalgleish/generator-bespoke)
+A [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation, built with [generator-bespoke](https://github.com/markdalgleish/generator-bespoke).
+
+The design is heavily inspired by the fun & GIF-rich presentation about [Web Directions][webdir] by [Glen Maddern][glen]. Enjoy my take with Coffee & Seinfeld.
 
 ### View slides locally
 
@@ -30,5 +32,7 @@ $ npm install && bower install
 $ grunt server
 ```
 
-[pf]: http://kalebdf.com 
+[pf]: http://kalebdf.com
 [htf]: houstontechfest.org
+[webdir]: http://geelen.github.io/web-directions-talk/
+[glen]: http://github.com/geelen
