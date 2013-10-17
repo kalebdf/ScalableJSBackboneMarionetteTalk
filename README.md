@@ -1,6 +1,15 @@
 # Scalable JavaScript with Backbone and Marionette
 
-Originally presented by Kaleb Fulgham on September 28, 2013 at Houston Tech Fest 2013.
+Originally presented by [Kaleb Fulgham][pf] in a talk on September 28, 2013 at [Houston Tech Fest 2013][htf].
+
+## Stellar Resources
+
+1. [Backbone Fundamentals Book by Addy Osmani](http://addyosmani.github.io/backbone-fundamentals)
+1. [Unsuck Your Backbone](https://speakerdeck.com/ammeep/unsuck-your-backbone)
+1. [Little Opinions Big Possibilities, Large Backbone Apps](https://speakerdeck.com/backbonerails/little-opinions-big-possibilities-the-tools-and-patterns-for-building-large-scale-backbone-applications)
+1. [BackboneConf 2013 Talks - Keynote & Others](http://backboneconf.com/)
+1. [Backbone Plugins Book by Derick Bailey](https://leanpub.com/building-backbone-plugins)
+1. [Backbone In The Wild by Kaleb Fulgham](http://kalebdf.github.io/BackboneInTheWildTalk/)
 
 ## Presentation
 
@@ -14,9 +23,12 @@ First, ensure you have the following installed:
 2. [Bower](http://bower.io): `$ npm install -g bower`
 3. [Grunt](http://gruntjs.com): `$ npm install -g grunt-cli`
 
-Then, install dependencies and run the preview server:
+Then, install dependencies and run the preview server.
 
 ```bash
 $ npm install && bower install
 $ grunt server
 ```
+
+[pf]: http://kalebdf.com 
+[htf]: houstontechfest.org
