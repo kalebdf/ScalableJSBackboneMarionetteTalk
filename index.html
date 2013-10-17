@@ -1,0 +1,162 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><title>Scalable JavaScript with Backbone and Marionette - Kaleb Fulgham</title><description>Presented by Kaleb Fulgham in a talk on September 28, 2013 at Houston Tech Fest 2013</description><link rel="stylesheet" type="text/css" href="bower_components/normalize-css/normalize.css"><link rel="stylesheet" type="text/css" href="bower_components/prism/prism-tomorrow.css"><link rel="stylesheet" type="text/css" href="styles/main.css"><link rel="stylesheet" type="text/css" href="styles/backgrounds.css"></head><body><article class="bespoke-parent"><section data-bespoke-state="coffee-steam"><div class="content"><div class="byline"><div class="classy">Welcome to the talk:</div></div><h1>Scalable JavaScript</h1><div class="byline"><div class="classy">with</div></div><h1><strong> Backbone</strong> and<strong> Marionette</strong></h1><div class="byline"><div class="classy">with me:</div></div><div class="me"></div><p>Kaleb Fulgham</p><p>App Lead at PROS</p><div class="byline"><a href="http://kalebdf.com">http://kalebdf.com</a><a href="https://twitter.com/kalebdf">@kalebdf</a><a href="http://github.com/kalebdf">git://kalebdf</a></div></div></section><section data-bespoke-state="coffee-stir"><div class="content"><div class="byline"><div class="classy">Confessions</div></div><h1>I love coffee!</h1><div class="byline"><div class="classy">Americano, Cold Brew, Cortado, etc.</div></div></div></section><section data-bespoke-state="coffee-stir"><div class="content"><div class="byline"><div class="classy">Confessions</div></div><h1>I love the JavaScripts;</h1><div class="byline"><div class="classy">I may love CoffeeScript more</div></div></div></section><section data-bespoke-state="stuff-face"><div class="content"><div class="unbrokenline"></div><h2>Web applications</h2><div class="byline"><div class="classy">innevitably grow & become</div></div><h2><em>large</em> & complex</h2><div class="unbrokenline"></div></div></section><section data-bespoke-state="cleese"><div class="content"><div class="unbrokenline"></div><h2>Solid architecture</h2><div class="byline"><div class="classy">on the</div></div><h2>backend</h2><div class="byline"><div class="classy">and the</div></div><h2>client</h2><div class="byline"><div class="classy">is</div></div><h2>essential</h2><div class="unbrokenline"></div></div></section><section data-bespoke-state="cleese"><div class="content"><div class="unbrokenline"></div><h2><em>Large</em> apps</h2><div class="byline"><div class="classy">should be composed of</div></div><h2><small>small</small> parts</h2><div class="unbrokenline"></div></div></section><section data-bespoke-state="coffee-espresso"><div class="content"><div class="unbrokenline"></div><h2>UI Views</h2><div class="byline"><div class="classy">should be separate from</div></div><h2>Data & Business Logic</h2><div class="unbrokenline"></div></div></section><section data-bespoke-state="codescroll"><div class="content"><h2>jQuery</h2><div class="byline"><div class="classy">a tool for the masses</div></div><h2>DOM manipulation</h2><div class="byline"><div class="classy">and</div></div><h2>$.ajax</h2><div class="byline"><div class="classy">and</div></div><h2>plugins...</h2></div></section><section data-bespoke-state="soup"><div class="content"><div class="unbrokenline"></div><h2>Hacking together jQuery</h2><div class="byline"><div class="classy">will not scale but instead</div></div><h2>will make code soup</h2><div class="byline"><div class="classy">with state stored everywhere</div></div></div></section><section data-bespoke-state="soup"><div class="content"><div class="unbrokenline"></div><h2>Soup != App</h2><div class="byline"><div class="classy">so</div></div><h2>Let's focus...</h2><div class="unbrokenline"></div></div></section><section data-bespoke-state="money"><div class="content"><div class="byline"><div class="classy">We desire to</div></div><h2>Solve a Business Problem</h2><div class="unbrokenline"></div><h3>Data, Views, Interactions</h3><div class="unbrokenline"></div></div></section><section><div class="content"><div class="byline"><div class="classy">I present to you the</div></div><h2 style="background-color:#EEE;padding: 15px 5px 0px 5px;"><img src="images/backbone.png" width="600"></h2><div class="byline"><div class="classy">library</div></div></div></section><section data-bespoke-state="george-popcorn"><div class="content"><h2><strong>Backbone.js</strong></h2><h3>MVC, MVP, MV* ...</h3><ol><li><em>MODELS</em> with key-value binding</li><li><em>COLLECTIONS</em> to enumerate</li><li><em>VIEWS</em> with declarative event handling</li><li><em>ROUTERS</em> provide browser history support</li><li><em>EVENTS</em> galore!</li></ol></div></section><section data-bespoke-state="george-popcorn"><div class="content"><div class="byline"><div class="classy">Backbone.js (6.3kb) is a</div></div><h2>MV* library <br/> not a framework</h2><div class="byline"><div class="classy">It has easy-to-read</div></div><h2>annotated source code</h2></div></section><section data-bespoke-state="george-popcorn"><div class="content"><div class="byline"><div class="classy">It is a simple</div></div><h2>app backbone</h2><div class="byline"><div class="classy">providing minimal & sane</div></div><h2>abstractions & building blocks</h2></div></section><section data-bespoke-state="george-popcorn"><div class="content"><div class="byline"><div class="classy">Use as much or as little for</div></div><h2>Embedded widgets</h2><div class="byline"><div class="classy">all the way up to</div></div><h2>Massive composite apps</h2><div class="unbrokenline"></div></div></section><section data-bespoke-state="coffee-pour"><div class="content"><div class="byline"><div class="classy">Any Object can have</div></div><h2>Backbone.Events</h2><div class="byline"><div class="classy">simply extend & trigger</div></div><code class="language-javascript"><pre>var object = {};
+
+_.extend(object, Backbone.Events);
+
+object.on(&quot;alert&quot;, function(msg) {
+  alert(&quot;Triggered &quot; + msg);
+});
+
+object.trigger(&quot;alert&quot;, &quot;an event!&quot;);
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><div class="byline"><div class="classy">Create a convenient</div></div><h2>Event dispatcher</h2><div class="byline"><div class="classy">to coordinate events in the app</div></div><code class="language-javascript"><pre>var window.App = {};
+
+// ... amazing app code ...
+
+App.dispatcher = _.clone(Backbone.Events);
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h2>Venue JSON</h2><code class="language-javascript"><pre>{
+  &quot;id&quot;: &quot;508b5225e4b0c9eb71763651&quot;,
+  &quot;name&quot;: &quot;Southside Espresso&quot;,
+  &quot;twitter&quot;: &quot;@SouthsideHOU&quot;,
+  &quot;categories&quot;: [
+    {
+      &quot;id&quot;: &quot;4bf58dd8d48988d1e0931735&quot;,
+      &quot;name&quot;: &quot;Coffee Shop&quot;,
+      &quot;icon&quot;: &quot;http://t.co/coffeeshop_bg_32.png&quot;
+    }
+  ],
+  &quot;location&quot;: {
+    &quot;address&quot;: &quot;904-C Westheimer Rd.&quot;,
+    &quot;postalCode&quot;: &quot;77006&quot;,
+    &quot;city&quot;: &quot;Houston&quot;
+  }
+}
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h2>Backbone.Models</h2><code class="language-javascript"><pre>var Venue = Backbone.Model.extend({
+  urlRoot: '/venues'
+});
+
+var venue = new Venue({
+  name: &quot;Southside Espresso&quot;,
+  twitter: &quot;@SouthsideHOU&quot;
+});
+
+venue.get('name');
+// Southside Espresso
+
+venue.set('open', false);
+venue.hasChanged(); // true
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h2>Models + Events</h2><code class="language-javascript"><pre>/* Listen to any change */
+venue.on('change', function(){
+  console.log('Changed something');
+});
+venue.set('name', 'The South Side');
+// Changed something
+
+
+// Listen to `open` changes
+venue.on('change:open', function(){
+  console.log('Notify Kaleb');
+});
+venue.set('open', true);
+// Notify Kaleb
+// Changed something
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><div class="byline"><div class="classy">Models can be organized into</div></div><h2>Collections</h2><div class="byline"><div class="classy">for convenient access, ordering, and server syncing</div></div></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h2>Server Syncing</h2><div class="byline"><div class="classy">with Models & Collections</div></div><code class="language-javascript"><pre>var Venue = Backbone.Model.extend({
+  urlRoot: '/venues'
+});
+
+var venue = new Venue({ id : 123 });
+venue.fetch(); // $.ajax `GET /venues/123`
+
+venue.set('open', true);
+venue.save(); // $.ajax `PUT /venues/123`
+</pre></code></div></section><section data-bespoke-state="whoa-dude"><div class="content"><div class="byline"><div class="classy">Underscore.js library's functions are</div></div><h2>helpful utilities</h2><div class="byline"><div class="classy">automatically mixed-into Models & Collections</div></div><div style="margin-left: 100px;" class="row"><code class="language-javascript"><pre>_.each();
+_.filter();
+_.indexBy();
+_.last();
+...</pre></code><code class="language-javascript"><pre>_.map();
+_.pluck();
+_.reduce();
+_.where();
+...
+</pre></code></div></div></section><section data-bespoke-state="coffee-pour"><div class="content"><div class="byline"><div class="classy">More convention than code in a</div></div><h2>Backbone.View</h2></div></section><section data-bespoke-state="coffee-pour"><div class="content"><div class="byline"><div class="classy">Organize into</div></div><h2>Logical views</h2><div class="byline"><div class="classy">that are</div></div><h2>Backed by Models</h2><div class="byline"><div class="classy">each of which can</div></div><h2>Update independently</h2><div class="byline"><div class="classy">without unneccesary redraw</div></div></div></section><section data-bespoke-state="bill-coffee"><div class="content"><byline><div class="classy">Let's dive into the</div></byline><h2>Example Foursquare App</h2></div></section><section data-bespoke-state="george-yes"><div class="content"><div class="byline"><div class="classy">Is Backbone lacking X or Y feature?</div></div><h2>Check the <br> vibrant community!</h2><div class="byline"><div class="classy">of plugin & extension authors</div></div></div></section><section data-bespoke-state="finger-wag"><div class="content"><div class="byline"><div class="classy">What about all of that</div></div><h2>Backbone.View boilerplate?</h2><div class="byline"><div class="classy">Can anything be done? Any extensions?</div></div></div></section><section><div class="content"><div class="byline"><div class="classy">I present to you the</div></div><h2 style="background-color:#EEE;padding: 5px 0px 0px 5px;"><img src="images/marionette.png" height="300" alt="marionette.js"></h2><div class="byline"><div class="classy">library</div></div></div></section><section data-bespoke-state="applause"><div class="content"><h2>Marionette.js</h2><ol><li>Reduction of <em>View Boilerplates</em></li><li>Memory management (cleaning up zombie views)</li><li>Promotes modular, event-driven architecture</li><li>Sensible defaults</li><li>Use only what you need!</li></ol></div></section><section data-bespoke-state="bill-coffee"><div class="content"><h2>Let's go back to the code</h2></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h3>Before Marionette</h3><code class="language-javascript"><pre>var ItemView = Backbone.View.extend({
+  tagName: 'li',
+  template: _.template($('#item-template').html()),
+  initialize: function() {
+    this.model.on('change',this.render,this);
+    this.model.on('destroy',this.remove,this);
+  },
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }
+});
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h3>Before Marionette</h3><code class="language-javascript"><pre>var ListView = Backbone.View.extend({
+  tagName: 'ui',
+  initialize: function() {
+    this.collection.on('add',this.addItem,this);
+    this.collection.on('remove',this.removeItem,this);
+    this.collection.on('reset',this.render,this);
+  },
+  // addItem: -&gt; Add item to model-to-view map
+  // removeItem: -&gt; # Remove item from above map
+  render: function() {
+    this.$el.html('')
+    this.collection.each(function(model){
+      view = new ItemView({model: model})
+      this.$el.append(view.render().$el)
+    });
+  }
+});
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h2>With Marionette</h2><code class="language-javascript"><pre>var MItemView = Marionette.ItemView.extend({
+  tagName: 'li',
+  template: '#item-template'
+});
+
+var MListView = Marionette.CollectionView.extend({
+  itemView: MItemView
+});
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h3>Zombie Views</h3><code class="language-javascript"><pre>var MyView = Backbone.View.extend({
+  initialize: function() {
+    // Bind to change event to call re-render
+    this.model.on('change', this.render, this);
+  },
+  render: function() {
+    alert('Rendering the view '+this.cid);
+  }
+});
+var venue = new Backbone.Model();
+var view = new MyView({ model: venue});
+// Zombie created
+view = new MyView({ model: venue});
+// 2 alerts will fire
+venue.set({ name: 'Southside Espresso' });
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h3>Killing the Zombie Views</h3><code class="language-javascript"><pre>var MyView = Backbone.View.extend({
+  initialize: function() {
+    // Bind to change event to call re-render
+    this.listenTo(this.model, 'change', this.render);
+  },
+  close: function() { this.stopListening(); },
+  render: function() {
+    alert('Rendering the view '+this.cid);
+  }
+});
+var venue = new Backbone.Model();
+var view = new MyView({ model: venue});
+view.close(); // Double-tap. Kill the zombie!
+view = new MyView({ model: venue });
+// Only 1 alert will fire
+venue.set({ name: 'Southside Espresso' });
+</pre></code></div></section><section data-bespoke-state="coffee-pour"><div class="content"><h3>Keep it clean & simple</h3><code class="language-javascript"><pre>var AppLayout = Marionette.Layout.extend({
+  regions: {
+    menu: &quot;#menu&quot;,
+    main: &quot;#main&quot;
+  }
+});
+var layout = new AppLayout();
+layout.render();
+layout.main.show(new SummaryView());
+
+// ... user interactions ...
+
+layout.main.show(new DetailedView());
+// SummaryView `close` is called.
+</pre></code></div></section><section data-bespoke-state="its-ok"><div class="content"><div class="byline"><div class="classy">Marionette.js also offers solutions for</div></div><h2>Composite Event-Driven</h2><div class="byline"><div class="classy">architecture through</div></div><h2>Eventing, App, Modules</h2></div></section><section data-bespoke-state="high-five"><div class="content"><div class="byline"><div class="classy">Build upon the</div></div><h2>shoulders of giants</h2><div class="byline"><div class="classy">Many companies use Backbone.js</div></div><h3>PROS, Disqus, Rdio</h3><h3>Trello, USA Today, Walmart</h3><h3>Games & Interactive Magazines</h3><h3>Construction, Business, & Pricing</h3></div></section><section data-bespoke-state="high-five"><div class="content"><div class="byline"><div class="classy">Create your app with a</div></div><h2>Composite & Modular design</h2><div class="byline"><div class="classy">and at least use</div></div><h2>Backbone.js with Marionette.js</h2></div></section><section data-bespoke-state="george-goodjob"><div class="content"><h2>Stellar Resources</h2><ol><li><a href="http://addyosmani.github.io/backbone-fundamentals">Backbone Fundamentals Book by Addy Osmani</a></li><li><a href="https://speakerdeck.com/ammeep/unsuck-your-backbone">Unsuck Your Backbone</a></li><li><a href="https://speakerdeck.com/backbonerails/little-opinions-big-possibilities-the-tools-and-patterns-for-building-large-scale-backbone-applications">Little Opinions Big Possibilities, Large Backbone Apps</a></li><li><a href="http://backboneconf.com">BackboneConf 2013 Talks - Keynote & Others</a></li><li><a href="https://leanpub.com/building-backbone-plugins">Backbone Plugins Book by Derick Bailey</a></li><li><a href="http://kalebdf.github.io/BackboneInTheWildTalk/">Backbone In The Wild by Kaleb Fulgham</a></li></ol></div></section><section data-bespoke-state="coffee-stir"><div class="content"><div class="unbrokenline"></div><h1><strong>Thank You!</strong></h1><div class="unbrokenline"></div></div></section><section data-bespoke-state="coffee-stir"><div class="content"><h2><strong>QUESTIONS?</strong></h2><div class="unbrokenline"></div><h3>We @ PROS are hiring<strong> UI Engineers</strong>!</h3><div class="byline"><div class="classy">Contact me:</div></div><h4>Kaleb Fulgham <br>
+kfulgham@pros.com</h4><div class="byline"><div class="classy">or on Twitter</div></div><div class="me"></div><h4><a href="https://twitter.com/kalebdf">@kalebdf</a></h4></div></section></article><script src="bower_components/bespoke.js/dist/bespoke.min.js"></script><script src="bower_components/bespoke-scale/dist/bespoke-scale.min.js"></script><script src="bower_components/bespoke-hash/dist/bespoke-hash.min.js"></script><script src="bower_components/bespoke-state/dist/bespoke-state.min.js"></script><script src="bower_components/prism/prism.js"></script><script src="scripts/jquery.js"></script><script src="scripts/underscore.js"></script><script src="scripts/backbone.js"></script><script src="scripts/main.js"></script></body></html>
