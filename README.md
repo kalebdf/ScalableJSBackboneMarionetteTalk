@@ -2,6 +2,8 @@
 
 Originally presented by me, [Kaleb Fulgham][pf], in a talk on September 28, 2013 at [Houston Tech Fest 2013][htf].
 
+View the latest version of the presentation on [github.io here][present].
+
 ## Stellar Resources
 
 1. [Backbone Fundamentals Book by Addy Osmani](http://addyosmani.github.io/backbone-fundamentals)
@@ -33,6 +35,7 @@ $ grunt server
 ```
 
 [pf]: http://kalebdf.com
-[htf]: houstontechfest.org
+[present]: http://kalebdf.github.io/ScalableJSBackboneMarionetteTalk/
+[htf]: http://houstontechfest.org
 [webdir]: http://geelen.github.io/web-directions-talk/
 [glen]: http://github.com/geelen
